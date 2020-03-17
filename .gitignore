@@ -1,0 +1,19 @@
+
+# visual studio
+.vs
+
+*.sln
+*.suo
+*.opensdf
+*.sdf
+
+# ue4
+Build
+Content
+Intermediate
+Binaries
+Saved
+/*/Binaries/**
+/*/Plugins/**/Binaries/**
+/*/Plugins/**/Intermediate/**
+
