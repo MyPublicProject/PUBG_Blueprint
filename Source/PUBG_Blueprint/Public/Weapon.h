@@ -24,7 +24,7 @@ public:
 
 
 UCLASS()
-class MYSPECIALEFFECTS_API AWeapon : public AActor
+class PUBG_BLUEPRINT_API AWeapon : public AActor
 {
 	GENERATED_BODY()
 	

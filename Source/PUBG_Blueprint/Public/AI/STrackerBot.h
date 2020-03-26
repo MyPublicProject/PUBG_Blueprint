@@ -7,7 +7,7 @@
 #include "STrackerBot.generated.h"
 
 UCLASS()
-class MYSPECIALEFFECTS_API ASTrackerBot : public APawn
+class PUBG_BLUEPRINT_API ASTrackerBot : public APawn
 {
 	GENERATED_BODY()
 

@@ -1,4 +1,4 @@
-#include "MySpecialEffectsCharacter.h"
+#include "PUBG_BlueprintCharacter.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -10,7 +10,7 @@
 //////////////////////////////////////////////////////////////////////////
 // AMySpecialEffectsCharacter
 
-AMySpecialEffectsCharacter::AMySpecialEffectsCharacter()
+APUBG_BlueprintCharacter::APUBG_BlueprintCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -45,58 +45,58 @@ AMySpecialEffectsCharacter::AMySpecialEffectsCharacter()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void AMySpecialEffectsCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void APUBG_BlueprintCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	PlayerInputComponent->BindAxis("MoveForward", this, &AMySpecialEffectsCharacter::MoveForward);
-	PlayerInputComponent->BindAxis("MoveRight", this, &AMySpecialEffectsCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &APUBG_BlueprintCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &APUBG_BlueprintCharacter::MoveRight);
 
 	// PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("TurnRate", this, &AMySpecialEffectsCharacter::TurnAtRate);
+	PlayerInputComponent->BindAxis("TurnRate", this, &APUBG_BlueprintCharacter::TurnAtRate);
 	// PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis("LookUpRate", this, &AMySpecialEffectsCharacter::LookUpAtRate);
+	PlayerInputComponent->BindAxis("LookUpRate", this, &APUBG_BlueprintCharacter::LookUpAtRate);
 
 	// handle touch devices
-	PlayerInputComponent->BindTouch(IE_Pressed, this, &AMySpecialEffectsCharacter::TouchStarted);
-	PlayerInputComponent->BindTouch(IE_Released, this, &AMySpecialEffectsCharacter::TouchStopped);
+	PlayerInputComponent->BindTouch(IE_Pressed, this, &APUBG_BlueprintCharacter::TouchStarted);
+	PlayerInputComponent->BindTouch(IE_Released, this, &APUBG_BlueprintCharacter::TouchStopped);
 
 	// VR headset functionality
-	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AMySpecialEffectsCharacter::OnResetVR);
+	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &APUBG_BlueprintCharacter::OnResetVR);
 
 }
 
-void AMySpecialEffectsCharacter::OnResetVR()
+void APUBG_BlueprintCharacter::OnResetVR()
 {
-	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+	// UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 }
 
-void AMySpecialEffectsCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
+void APUBG_BlueprintCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		Jump();
 }
 
-void AMySpecialEffectsCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
+void APUBG_BlueprintCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		StopJumping();
 }
 
-void AMySpecialEffectsCharacter::TurnAtRate(float Rate)
+void APUBG_BlueprintCharacter::TurnAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
 }
 
-void AMySpecialEffectsCharacter::LookUpAtRate(float Rate)
+void APUBG_BlueprintCharacter::LookUpAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 
-void AMySpecialEffectsCharacter::MoveForward(float Value)
+void APUBG_BlueprintCharacter::MoveForward(float Value)
 {
 	if ((Controller != NULL) && (Value != 0.0f))
 	{
@@ -110,7 +110,7 @@ void AMySpecialEffectsCharacter::MoveForward(float Value)
 	}
 }
 
-void AMySpecialEffectsCharacter::MoveRight(float Value)
+void APUBG_BlueprintCharacter::MoveRight(float Value)
 {
 	if ( (Controller != NULL) && (Value != 0.0f) )
 	{

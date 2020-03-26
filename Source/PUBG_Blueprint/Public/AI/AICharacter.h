@@ -7,7 +7,7 @@
 #include "AICharacter.generated.h"
 
 UCLASS()
-class MYSPECIALEFFECTS_API AAICharacter : public ACharacter
+class PUBG_BLUEPRINT_API AAICharacter : public ACharacter
 {
 	GENERATED_BODY()
 

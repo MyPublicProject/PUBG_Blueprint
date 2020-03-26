@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "MySpecialEffectsCharacter.generated.h"
+#include "PUBG_BlueprintCharacter.generated.h"
 
 UCLASS(config=Game)
-class AMySpecialEffectsCharacter : public ACharacter
+class APUBG_BlueprintCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -19,7 +19,7 @@ class AMySpecialEffectsCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 public:
-	AMySpecialEffectsCharacter();
+	APUBG_BlueprintCharacter();
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)

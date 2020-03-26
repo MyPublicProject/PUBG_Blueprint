@@ -11,8 +11,9 @@
 #include "Particles/ParticleSystem.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "Components/SphereComponent.h"
-#include "MySpecialEffectsCharacter.h"
+#include "PUBG_Blueprint.h"
 #include "Math/UnrealMathUtility.h"
+#include "PUBG_BlueprintCharacter.h"
 
 
 // Sets default values
@@ -91,12 +92,12 @@ FVector ASTrackerBot::GetNextPathPoint()
 {
 	ACharacter* PlayerPawn = UGameplayStatics::GetPlayerCharacter(this, 0);
 
-	UNavigationPath* NavPath = UNavigationSystemV1::FindPathToActorSynchronously(this, GetActorLocation(), PlayerPawn);
+	// UNavigationPath* NavPath = UNavigationSystemV1::FindPathToActorSynchronously(this, GetActorLocation(), PlayerPawn);
 
-	if (NavPath && NavPath->PathPoints.Num() > 1)
-	{
-		return NavPath->PathPoints[1];
-	}
+	// if (NavPath && NavPath->PathPoints.Num() > 1)
+	// {
+	//  	return NavPath->PathPoints[1];
+	// }
 
 	return GetActorLocation();
 }
@@ -159,7 +160,8 @@ void ASTrackerBot::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	if (!bStartedSelfDestruction && !bDeid)
 	{
-		ACharacter* PlayerCharacter = Cast<AMySpecialEffectsCharacter>(OtherActor);
+		ACharacter* PlayerCharacter;
+		PlayerCharacter = Cast<APUBG_BlueprintCharacter>(OtherActor);
 
 		if (PlayerCharacter)
 		{
